@@ -199,20 +199,48 @@ header {
 .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--light); }
 .feature-card p { color: var(--gray); line-height: 1.6; }
 
+
 /* ========== Screenshots ========== */
 .screenshot-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 35px; justify-items: center; align-items: center;
-  padding: 70px 20px; background: transparent;
+  gap: 35px;
+  justify-items: center;
+  align-items: center;
+  padding: 70px 20px;
+  background: transparent;
 }
-.screenshot-card { background: transparent; border-radius: 12px; overflow: hidden; position: relative; }
-.screenshot-card::before, .screenshot-card::after { content: none; }
+
+.screenshot-card {
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.screenshot-card::before,
+.screenshot-card::after {
+  content: none;
+}
+
 .screenshot-card img {
-  width: 100%; height: auto; border-radius: 0; background: transparent;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: #fff; /* ensures visibility on dark backgrounds */
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  mix-blend-mode: multiply; filter: contrast(1.1) brightness(1.1);
-}          
+  filter: contrast(1.05) brightness(1.05); /* slight enhancement */
+  mix-blend-mode: normal; /* safe for all devices */
+}
+
+/* Optional: mobile-specific overrides */
+@media (max-width: 768px) {
+  .screenshot-card img {
+    mix-blend-mode: normal;
+    background: #fff;
+  }
+}
+     
 /* ========== Download ========== */
 .download {
   padding: 5rem 2rem; text-align: center;
