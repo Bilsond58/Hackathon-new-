@@ -214,6 +214,7 @@ header {
   mix-blend-mode: multiply; filter: contrast(1.1) brightness(1.1);
 }
 
+
 /* ========== Download ========== */
 .download {
   padding: 5rem 2rem; text-align: center;
