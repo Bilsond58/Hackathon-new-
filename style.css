@@ -237,7 +237,7 @@ header {
 @media (max-width: 768px) {
   .screenshot-card img {
     mix-blend-mode: normal;
-    background: #fff;
+    
   }
 }
      
