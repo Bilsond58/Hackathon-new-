@@ -27,9 +27,26 @@
   </div>
 
   <div class="auth-buttons">
-    <a href="login.html" class="btn btn-outline">Log In</a>
-    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+  <a href="login.html" class="btn btn-outline" id="loginBtn">Log In</a>
+  <a href="signup.html" class="btn btn-primary" id="signupBtn">Sign Up</a>
+  
+  <!-- Profile Avatar (hidden by default) -->
+  <a href="profile.html" id="profileBtn" class="avatar" style="display: none;">
+    <span id="avatarInitial">U</span>
+  </a>
+</div>
+<!-- Avatar & Dropdown -->
+<div class="profile-menu" style="display:none;">
+  <div id="profileAvatar" class="profile-avatar">U</div>
+  <div class="profile-dropdown" id="profileDropdown">
+    <a href="profile.html">👤 My Profile</a>
+    <a href="#">⚙️ Settings</a>
+    <a href="#" id="logoutLink">🚪 Logout</a>
   </div>
+</div>
+
+
+
 </header>
 
   <!-- Hero Section -->
@@ -81,12 +98,50 @@
       </div>
     </div>
   </section>
+  <section class="features">
+  <div class="section-title">
+    <h2>Live Hackathons</h2>
+    <p>Engage with real-time events, hosted by colleges, companies, and HackHub itself.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+      <h3>Live Hackathon</h3>
+      <p>Monitor your progress in real-time during hackathons — leaderboards, checkpoints, and submissions.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-university"></i></div>
+      <h3>Colleges & Companies Host</h3>
+      <p>Empowering organizations to create and manage branded hackathons with custom rules and prizes.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+      <h3>HackHub Organizes</h3>
+      <p>HackHub-run events that bring innovators together to collaborate, build, and showcase projects.</p>
+    </div>
+  </div>
+</section>
+
   <!-- App screenshots  -->
   <section class="App Screendhots">
     <div class="section-title">
       <h2>App Screenshots</h2>
       <p>Explore the HackHub experience through our app screenshots</p>
     </div>
+    <!-- 🔗 Added Links -->
+  <div class="screenshot-links" style="text-align:center; margin-top:20px;">
+    <a href="https://drive.google.com/drive/folders/1ISqruEp16r0o3ZiMeb3THRw83L9IX_t4?usp=share_link" 
+       target="_blank" class="btn btn-primary" style="margin-right:10px;">
+       📂 View All Screens
+    </a>
+    <a href="https://www.figma.com/proto/5ElvDatIzzz4LSKOq4l4Qy/Untitled?node-id=0-1&t=fASoQHqJ5v7cLvnf-1" 
+       target="_blank" class="btn btn-secondary">
+       🎨 Open Prototype
+    </a>
+  </div>
 
 <div class="screenshot-gallery">
   <div class="screenshot-card">
@@ -177,25 +232,13 @@
     <p>&copy; 2025 HackHub. All rights reserved.</p>
   </div>
 </footer>
-<!-- Floating AI Chat Button -->
-<div class="chat-button" id="chatButton">
-  <i class="fas fa-robot"></i>
-</div>
 
-<!-- Chat Popup -->
-<div class="chat-popup" id="chatPopup">
-  <div class="chat-header">
-    <h3>HackHub AI Assistant</h3>
-    <span class="close-btn" id="closeChat">×</span>
-  </div>
-  <div class="chat-body" id="chatBody">
-    <div class="message bot">🤖 Hello Innovator! I'm your AI assistant. Ask me anything about HackHub 🚀</div>
-  </div>
-  <div class="chat-footer">
-    <input id="chatInput" type="text" placeholder="Type your message..." />
-    <button id="chatSend">Send</button>
-  </div>
-</div>
+
+  
+
+
 <script src="script.js"></script>
 </body>
-</html> 
+</html>   <!--
+  Made with ❤️ by Bilson Digal
+  GitHub: https://github.com/Bilsond58
