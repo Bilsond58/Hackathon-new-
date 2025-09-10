@@ -18,63 +18,33 @@
     <div class="circle"></div>
   </div>
   
-  
-
   <!-- Hero -->
   <header class="hero">
     <h1>HackHub is coming soon. Be the first to know!</h1>
   </header>
 
   <!-- Waiting List -->
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const waitlistForm = document.getElementById("waitlist-form");
-  const waitlistMsg = document.getElementById("waitlist-message");
-  const joinBtn = waitlistForm?.querySelector('button[type="submit"]');
-
-  if (waitlistForm) {
-    waitlistForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const formData = new FormData(waitlistForm);
-      const data = Object.fromEntries(formData.entries());
-
-      // Hide button
-      if (joinBtn) joinBtn.style.display = "none";
-
-      // Show thank-you message
-      if (waitlistMsg) {
-        waitlistMsg.innerHTML = `
-          🎉 Thank you, <b>${data.Name}</b>!<br>
-          🚀 You're now on the HackHub waitlist.<br>
-          We'll notify you at <b>${data.Email}</b>.
-        `;
-        waitlistMsg.style.color = "#00c853";
-        waitlistMsg.style.fontSize = "1.1rem";
-        waitlistMsg.style.fontWeight = "600";
-        waitlistMsg.style.textAlign = "center";
-      }
-    });
-  }
-});
-</script>
   <section class="waiting-list">
-  <h2>Join the Waiting List 🚀</h2>
-  <p>Be the first to know when HackHub launches. Sign up now!</p>
+    <h2>Join the Waiting List 🚀</h2>
+    <p>Be the first to know when HackHub launches. Sign up now!</p>
 
-  <form id="waitlist-form" class="styled-form">
-    <div class="input-group">
-      <i class="fa fa-user"></i>
-      <input type="text" name="Name" placeholder="Your Name" required />
-    </div>
-    <div class="input-group">
-      <i class="fa fa-envelope"></i>
-      <input type="email" name="Email" placeholder="Enter your email" required />
-    </div>
-    <button type="submit">Join Now</button>
-  </form>
+    <!-- Form -->
+    <form id="waitlist-form" class="styled-form">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" name="Name" placeholder="Your Name" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-envelope"></i>
+        <input type="email" name="Email" placeholder="Enter your email" required />
+      </div>
+      <button type="submit">Join Now</button>
+    </form>
 
-  <div id="waitlist-message" class="waitlist-message"></div>
-</section>
+    <!-- Message -->
+    <div id="waitlist-message" class="waitlist-message"></div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="back-home">
@@ -83,7 +53,63 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>© Contact to Bilson Digal.</p>
   </footer>
 
-  <!-- Load the script AFTER DOM parsing with defer -->
+  <!-- Script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const waitlistForm = document.getElementById("waitlist-form");
+    const waitlistMsg = document.getElementById("waitlist-message");
+
+    // Check if already joined
+    const waitlistData = JSON.parse(localStorage.getItem("waitlistData"));
+
+    if (waitlistData) {
+      // Hide form and show message
+      if (waitlistForm) waitlistForm.style.display = "none";
+      if (waitlistMsg) {
+        waitlistMsg.innerHTML = `
+          🎉 Thank you, <b>${waitlistData.name}</b>!<br>
+          🚀 You're already on the HackHub waitlist.<br>
+          We'll notify you at <b>${waitlistData.email}</b>.
+        `;
+        waitlistMsg.style.color = "#00c853";
+        waitlistMsg.style.fontSize = "1.1rem";
+        waitlistMsg.style.fontWeight = "600";
+        waitlistMsg.style.textAlign = "center";
+      }
+    }
+
+    // Handle new submission
+    if (waitlistForm) {
+      waitlistForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(waitlistForm);
+        const data = Object.fromEntries(formData.entries());
+
+        // Save in localStorage
+        localStorage.setItem("waitlistData", JSON.stringify({
+          name: data.Name,
+          email: data.Email
+        }));
+
+        // Hide form and show thank-you message
+        waitlistForm.style.display = "none";
+        if (waitlistMsg) {
+          waitlistMsg.innerHTML = `
+            🎉 Thank you, <b>${data.Name}</b>!<br>
+            🚀 You're now on the HackHub waitlist.<br>
+            We'll notify you at <b>${data.Email}</b>.
+          `;
+          waitlistMsg.style.color = "#00c853";
+          waitlistMsg.style.fontSize = "1.1rem";
+          waitlistMsg.style.fontWeight = "600";
+          waitlistMsg.style.textAlign = "center";
+        }
+      });
+    }
+  });
+  </script>
+
+  <!-- Load other scripts -->
   <script src="script.js" defer></script>
 </body>
 </html>
