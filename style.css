@@ -213,8 +213,6 @@ header {
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   mix-blend-mode: multiply; filter: contrast(1.1) brightness(1.1);
 }
-
-
 /* ========== Download ========== */
 .download {
   padding: 5rem 2rem; text-align: center;
