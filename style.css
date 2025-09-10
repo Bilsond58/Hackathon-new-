@@ -125,6 +125,56 @@ header {
   background: var(--secondary); color: var(--dark); border: 2px solid var(--secondary);
 }
 .btn-secondary:hover { background: transparent; color: var(--secondary); }
+/* Profile Avatar (Bigger & Cleaner) */
+#profileBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;        /* ⬅️ Bigger size */
+  height: 70px;       /* ⬅️ Bigger size */
+  border-radius: 50%; /* Circle */
+  background: var(--primary, #4a90e2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 28px;    /* ⬅️ Bigger initials */
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  border: 3px solid #fff; /* makes it look neat */
+}
+
+#profileBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* Dropdown below profile */
+.profile-dropdown {
+  position: absolute;
+  top: 80px; /* push below bigger avatar */
+  right: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+.profile-dropdown a {
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.3s ease;
+}
+.profile-dropdown a:last-child { border-bottom: none; }
+.profile-dropdown a:hover { background: rgba(255,255,255,0.1); }
+/* Toggle dropdown */
+#profileBtn.active + .profile-dropdown { display: flex; }
 
 /* ========== Features ========== */
 .features {
@@ -231,129 +281,156 @@ footer {
   opacity: 1; transform: translateY(0) scale(1); pointer-events: auto;
 }
 
-/* Waiting List Section */
+/* ===========================
+   Hero Section (Big Heading)
+   =========================== */
 .hero {
-  padding: 5rem 2rem;
   text-align: center;
-  max-width: 1000px;
+  padding: 80px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+
+  /* gradient text effect */
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
   margin: 0 auto;
 }
 
+/* ===========================
+   Waiting List Section
+   =========================== */
 .waiting-list {
-  margin: 20px auto;  /* reduce top margin */
-}
-
-
-
-.waiting-list {
-  background: linear-gradient(135deg, #7f5af0, #2cb67d); /* purple → teal */
-  padding: 60px 30px;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  padding: 40px 30px;
+  border-radius: 20px;
   text-align: center;
-  color: white;
-  margin: 60px auto;
-  max-width: 900px;
+  color: #fff;
+  margin: 40px auto;
+  max-width: 700px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .waiting-list h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
 .waiting-list p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.9);
 }
 
-/* Form */
-.waiting-form {
+/* Form layout */
+.styled-form {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap; /* stack on small screens */
+  flex-wrap: wrap;
 }
 
-.waiting-form input {
-  padding: 14px 18px;
+/* Input with icon */
+.input-group {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px 14px 40px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
   outline: none;
-  min-width: 250px;
-  font-size: 1rem;
-}
-
-.waiting-form button {
-  background: white;
-  color: #7f5af0;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 14px 22px;
-  cursor: pointer;
-  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.waiting-form button:hover {
-  background: #f0f0f0;
-  color: #2cb67d;
+.input-group input:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
 }
-/* Hero Section */
-.coming-soon-hero {
-  min-height: 70vh;
+
+/* Join Now button */
+.styled-form button {
+  padding: 14px 26px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.styled-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .styled-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .styled-form button {
+    width: 100%;
+  }
+}
+
+/* ===========================
+   Footer Section (Back Home)
+   =========================== */
+footer {
+  width: 100%;
+  padding: 40px 20px;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 30px 10px;
-  background: linear-gradient(180deg, #0a0a2a, #1a1a40);
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* diagonal cut */
-}
-
-.coming-soon-hero {
-  min-height: 70vh;              /* smaller than full screen */
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  padding: 30px 10px;            /* spacing */
-  
-}
-
-.coming-soon-hero h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #7f5af0, #2cb67d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-}
-
-.coming-soon-hero p {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-
-.coming-soon-hero p {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85);
 }
 
 .back-home {
-  margin-top: 1rem;
-  text-align: center;   /* ✅ center the button */
+  margin-bottom: 10px;
 }
 
 .back-home a {
-  display: inline-block;  /* ✅ so it centers properly */
-  padding: 12px 20px;
-  border-radius: 10px;
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -367,6 +444,11 @@ footer {
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
+footer p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
 
 /* ========== Auth Box (shared by Login & Sign Up) ========== */
 /* ========== Auth Box (shared by Login & Sign Up) ========== */
@@ -501,8 +583,6 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
-
-
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.5rem; }
