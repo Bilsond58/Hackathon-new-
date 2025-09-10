@@ -227,10 +227,10 @@ header {
   width: 100%;
   height: auto;
   border-radius: 12px;
-  background: #fff; /* ensures visibility on dark backgrounds */
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  filter: contrast(1.05) brightness(1.05); /* slight enhancement */
-  mix-blend-mode: normal; /* safe for all devices */
+  filter: contrast(1.05) brightness(1.05);
+  mix-blend-mode: normal; /* Safe, no darkening */
+  background: transparent; /* remove white background */
 }
 
 /* Optional: mobile-specific overrides */
