@@ -1,12 +1,13 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>HackHub – Coming Soon!</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Prevent favicon 404 -->
+  <link rel="icon" href="data:," />
 </head>
 <body>
 
@@ -16,30 +17,73 @@
     <div class="circle"></div>
     <div class="circle"></div>
   </div>
+  
+  
 
-  <!-- Coming Soon Header Section -->
-<header class="coming-soon-hero">
-  <div class="coming-soon-content">
-    <h1>🚀 We’re Building Something Amazing for You!</h1>
-    <p>HackHub is coming soon. Be the first to know!</p>
-  </div>
-</header>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>HackHub is coming soon. Be the first to know!</h1>
+  </header>
 
-  <!-- Waiting List Section -->
-<section id="waiting-list" class="waiting-list">
+  <!-- Waiting List -->
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const waitlistForm = document.getElementById("waitlist-form");
+  const waitlistMsg = document.getElementById("waitlist-message");
+  const joinBtn = waitlistForm?.querySelector('button[type="submit"]');
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(waitlistForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // Hide button
+      if (joinBtn) joinBtn.style.display = "none";
+
+      // Show thank-you message
+      if (waitlistMsg) {
+        waitlistMsg.innerHTML = `
+          🎉 Thank you, <b>${data.Name}</b>!<br>
+          🚀 You're now on the HackHub waitlist.<br>
+          We'll notify you at <b>${data.Email}</b>.
+        `;
+        waitlistMsg.style.color = "#00c853";
+        waitlistMsg.style.fontSize = "1.1rem";
+        waitlistMsg.style.fontWeight = "600";
+        waitlistMsg.style.textAlign = "center";
+      }
+    });
+  }
+});
+</script>
+  <section class="waiting-list">
   <h2>Join the Waiting List 🚀</h2>
   <p>Be the first to know when HackHub launches. Sign up now!</p>
-  <form class="waiting-form">
-    <input type="email" placeholder="Enter your email" required>
+
+  <form id="waitlist-form" class="styled-form">
+    <div class="input-group">
+      <i class="fa fa-user"></i>
+      <input type="text" name="Name" placeholder="Your Name" required />
+    </div>
+    <div class="input-group">
+      <i class="fa fa-envelope"></i>
+      <input type="email" name="Email" placeholder="Enter your email" required />
+    </div>
     <button type="submit">Join Now</button>
   </form>
+
+  <div id="waitlist-message" class="waitlist-message"></div>
 </section>
+  <!-- Footer -->
+  <footer>
+    <div class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </div>
+    <p>© Contact to Bilson Digal.</p>
+  </footer>
 
-  <!-- Footer Back Button -->
-  <!-- Back to Home Button -->
-<div class="back-home">
-  <a href="index.html">← Back to Home</a>
-</div>
-
+  <!-- Load the script AFTER DOM parsing with defer -->
+  <script src="script.js" defer></script>
 </body>
 </html>
