@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bilsond58.github.io/Hackathon-new-/sitemap.xml
